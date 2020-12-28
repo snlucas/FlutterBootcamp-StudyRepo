@@ -29,54 +29,58 @@ class MyApp extends StatelessWidget {
                 Text(
                   'FLUTTER DEVELOPER',
                   style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: 'SourceSans',
+                    color: Colors.teal.shade100,
+                    letterSpacing: 2.5,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Source Sans Pro',
                     fontSize: 20.0,
                   ),
                 ),
-                Divider(
-                  indent: 150.0,
-                  endIndent: 150.0,
-                  color: Colors.white,
-                ),
-                Container(
-                  height: 50.0,
-                  padding: EdgeInsets.all(10.0),
-                  margin: EdgeInsets.all(20.0),
-                  color: Colors.white,
-                  child: Row(
-                    children: <Widget>[
-                      Icon(
-                        Icons.phone,
-                        color: Colors.teal,
-                      ),
-                      Text(
-                        '+55 (51) 99999-9999',
-                        style: TextStyle(
-                          fontSize: 20.0,
-                        ),
-                      ),
-                    ],
+                SizedBox(
+                  width: 150.0,
+                  height: 20.0,
+                  child: Divider(
+                    color: Colors.white,
                   ),
                 ),
-                Container(
-                  height: 50.0,
-                  padding: EdgeInsets.all(10.0),
-                  margin: EdgeInsets.all(20.0),
+                Card(
+                  margin: EdgeInsets.symmetric(
+                    vertical: 10.0,
+                    horizontal: 25.0,
+                  ),
                   color: Colors.white,
-                  child: Row(
-                    children: <Widget>[
-                      Icon(
-                        Icons.mail,
-                        color: Colors.teal,
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.phone,
+                      color: Colors.teal,
+                    ),
+                    title: Text(
+                      '+55 (51) 99999-9999',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        fontFamily: 'Source Sans Pro',
                       ),
-                      Text(
-                        'lucas.mail@mail.com',
-                        style: TextStyle(
-                          fontSize: 20.0,
-                        ),
+                    ),
+                  ),
+                ),
+                Card(
+                  margin: EdgeInsets.symmetric(
+                    vertical: 10.0,
+                    horizontal: 25.0,
+                  ),
+                  color: Colors.white,
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.mail,
+                      color: Colors.teal,
+                    ),
+                    title: Text(
+                      'lucas.mail@mail.com',
+                      style: TextStyle(
+                        fontFamily: 'Source Sans Pro',
+                        fontSize: 20.0,
                       ),
-                    ],
+                    ),
                   ),
                 ),
               ],
