@@ -1,15 +1,15 @@
 import 'package:audioplayers/audio_cache.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(XylophoneApp());
 
-class MyApp extends StatefulWidget {
+class XylophoneApp extends StatefulWidget {
   @override
-  _MyAppState createState() => _MyAppState();
+  _XylophoneAppState createState() => _XylophoneAppState();
 }
 
-class _MyAppState extends State<MyApp> {
-  Expanded noteButton(String soundAsset, Color buttonColor) {
+class _XylophoneAppState extends State<XylophoneApp> {
+  Expanded noteButton({String soundAsset, Color buttonColor}) {
     return Expanded(
       child: FlatButton(
         onPressed: () {
@@ -30,13 +30,13 @@ class _MyAppState extends State<MyApp> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              noteButton('note1.wav', Colors.red),
-              noteButton('note2.wav', Colors.blue),
-              noteButton('note3.wav', Colors.green),
-              noteButton('note4.wav', Colors.purple),
-              noteButton('note5.wav', Colors.pink),
-              noteButton('note6.wav', Colors.yellow),
-              noteButton('note7.wav', Colors.cyan),
+              noteButton(soundAsset: 'note1.wav', buttonColor: Colors.red),
+              noteButton(soundAsset: 'note2.wav', buttonColor: Colors.blue),
+              noteButton(soundAsset: 'note3.wav', buttonColor: Colors.green),
+              noteButton(soundAsset: 'note4.wav', buttonColor: Colors.purple),
+              noteButton(soundAsset: 'note5.wav', buttonColor: Colors.pink),
+              noteButton(soundAsset: 'note6.wav', buttonColor: Colors.yellow),
+              noteButton(soundAsset: 'note7.wav', buttonColor: Colors.cyan),
             ],
           ),
         ),
