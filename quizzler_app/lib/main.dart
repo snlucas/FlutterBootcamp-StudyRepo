@@ -25,16 +25,34 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-  List<Icon> scoreKeeper = [
-    Icon(
-      Icons.check,
-      color: Colors.green,
-    ),
-    Icon(
+  int questionIndex = 0;
+  List<Icon> scoreKeeper = [];
+  List<String> questions = [
+    'You can lead a cow down stairs but not up stairs.',
+    'Approximately one quarter of human bones are in the feet.',
+    'A slug\'s blood is green.',
+  ];
+
+  Icon scoreIcon(bool value) {
+    // Icon for the correct answer
+    if (value) {
+      return Icon(
+        Icons.check,
+        color: Colors.green,
+      );
+    }
+
+    // Icon for the wrong answer
+    return Icon(
       Icons.close,
       color: Colors.red,
-    ),
-  ];
+    );
+  }
+
+  void nextQuestion() {
+    questionIndex =
+        questionIndex < questions.length - 1 ? questionIndex + 1 : 0;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +66,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                'This is where the question text will go.',
+                questions[questionIndex],
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -62,7 +80,12 @@ class _QuizPageState extends State<QuizPage> {
           child: Padding(
             padding: const EdgeInsets.all(15.0),
             child: FlatButton(
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  scoreKeeper.add(scoreIcon(true));
+                  nextQuestion();
+                });
+              },
               color: Colors.green,
               child: Text('true'),
             ),
@@ -72,17 +95,19 @@ class _QuizPageState extends State<QuizPage> {
           child: Padding(
             padding: const EdgeInsets.all(15.0),
             child: FlatButton(
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  scoreKeeper.add(scoreIcon(false));
+                  nextQuestion();
+                });
+              },
               color: Colors.red,
               child: Text('false'),
             ),
           ),
         ),
         Row(
-          children: <Widget>[
-            scoreKeeper.first,
-            scoreKeeper.last,
-          ],
+          children: scoreKeeper,
         ),
       ],
     );
