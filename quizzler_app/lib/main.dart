@@ -28,6 +28,8 @@ class _QuizPageState extends State<QuizPage> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         Expanded(
           flex: 5,
@@ -44,6 +46,38 @@ class _QuizPageState extends State<QuizPage> {
               ),
             ),
           ),
+        ),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: FlatButton(
+              onPressed: () {},
+              color: Colors.green,
+              child: Text('true'),
+            ),
+          ),
+        ),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: FlatButton(
+              onPressed: () {},
+              color: Colors.red,
+              child: Text('false'),
+            ),
+          ),
+        ),
+        Row(
+          children: <Widget>[
+            Icon(
+              Icons.check,
+              color: Colors.green,
+            ),
+            Icon(
+              Icons.close,
+              color: Colors.red,
+            ),
+          ],
         ),
       ],
     );
