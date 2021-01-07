@@ -30,6 +30,15 @@ class _QuizPageState extends State<QuizPage> {
 
   List<Icon> scoreKeeper = [];
 
+  void checkAnswer() {
+    bool correctAnswer = quizBrain.getQuestionAnswer() ? true : false;
+
+    setState(() {
+      scoreKeeper.add(scoreIcon(correctAnswer));
+      quizBrain.nextQuestion();
+    });
+  }
+
   Icon scoreIcon(bool value) {
     // Icon for the correct answer
     if (value) {
@@ -73,13 +82,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(15.0),
             child: FlatButton(
               onPressed: () {
-                bool correctAnswer =
-                    quizBrain.getQuestionAnswer() ? true : false;
-
-                setState(() {
-                  scoreKeeper.add(scoreIcon(correctAnswer));
-                  quizBrain.nextQuestion();
-                });
+                checkAnswer();
               },
               color: Colors.green,
               child: Text('true'),
@@ -91,12 +94,8 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(15.0),
             child: FlatButton(
               onPressed: () {
-                bool correctAnswer =
-                    quizBrain.getQuestionAnswer() ? true : false;
-
                 setState(() {
-                  scoreKeeper.add(scoreIcon(correctAnswer));
-                  quizBrain.nextQuestion();
+                  checkAnswer();
                 });
               },
               color: Colors.red,
