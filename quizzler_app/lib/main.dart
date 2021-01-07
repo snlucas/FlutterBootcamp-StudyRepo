@@ -48,9 +48,8 @@ class _QuizPageState extends State<QuizPage> {
   }
 
   void nextQuestion() {
-    questionIndex = questionIndex < quizBrain.questionBank.length - 1
-        ? questionIndex + 1
-        : 0;
+    questionIndex =
+        questionIndex < quizBrain.getSize() - 1 ? questionIndex + 1 : 0;
   }
 
   @override
@@ -65,7 +64,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                quizBrain.questionBank[questionIndex].questionText,
+                quizBrain.getQuestionText(questionIndex),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -81,9 +80,7 @@ class _QuizPageState extends State<QuizPage> {
             child: FlatButton(
               onPressed: () {
                 bool correctAnswer =
-                    quizBrain.questionBank[questionIndex].questionAnswer
-                        ? true
-                        : false;
+                    quizBrain.getQuestionAnswer(questionIndex) ? true : false;
 
                 setState(() {
                   scoreKeeper.add(scoreIcon(correctAnswer));
@@ -101,9 +98,7 @@ class _QuizPageState extends State<QuizPage> {
             child: FlatButton(
               onPressed: () {
                 bool correctAnswer =
-                    quizBrain.questionBank[questionIndex].questionAnswer
-                        ? true
-                        : false;
+                    quizBrain.getQuestionAnswer(questionIndex) ? true : false;
 
                 setState(() {
                   scoreKeeper.add(scoreIcon(correctAnswer));
