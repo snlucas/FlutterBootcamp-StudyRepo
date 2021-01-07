@@ -29,15 +29,30 @@ class QuizBrain {
         true),
   ];
 
-  String getQuestionText(int questionNumber) {
-    return this._questionBank[questionNumber].questionText;
+  int _questionIndex; // Used by the nextQuestion method
+
+  QuizBrain() {
+    this._questionIndex = 0;
   }
 
-  bool getQuestionAnswer(int questionNumber) {
-    return this._questionBank[questionNumber].questionAnswer;
+  String getQuestionText() {
+    return this._questionBank[this._questionIndex].questionText;
+  }
+
+  bool getQuestionAnswer() {
+    return this._questionBank[this._questionIndex].questionAnswer;
+  }
+
+  void nextQuestion() {
+    this._questionIndex =
+        _questionIndex < this.getSize() - 1 ? _questionIndex + 1 : 0;
   }
 
   int getSize() {
     return this._questionBank.length;
+  }
+
+  int getQuestionIndex() {
+    return this._questionIndex;
   }
 }

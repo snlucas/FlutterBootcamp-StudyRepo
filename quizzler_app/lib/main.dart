@@ -26,7 +26,6 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-  int questionIndex = 0;
   QuizBrain quizBrain = new QuizBrain();
 
   List<Icon> scoreKeeper = [];
@@ -47,11 +46,6 @@ class _QuizPageState extends State<QuizPage> {
     );
   }
 
-  void nextQuestion() {
-    questionIndex =
-        questionIndex < quizBrain.getSize() - 1 ? questionIndex + 1 : 0;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -64,7 +58,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                quizBrain.getQuestionText(questionIndex),
+                quizBrain.getQuestionText(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -80,11 +74,11 @@ class _QuizPageState extends State<QuizPage> {
             child: FlatButton(
               onPressed: () {
                 bool correctAnswer =
-                    quizBrain.getQuestionAnswer(questionIndex) ? true : false;
+                    quizBrain.getQuestionAnswer() ? true : false;
 
                 setState(() {
                   scoreKeeper.add(scoreIcon(correctAnswer));
-                  nextQuestion();
+                  quizBrain.nextQuestion();
                 });
               },
               color: Colors.green,
@@ -98,11 +92,11 @@ class _QuizPageState extends State<QuizPage> {
             child: FlatButton(
               onPressed: () {
                 bool correctAnswer =
-                    quizBrain.getQuestionAnswer(questionIndex) ? true : false;
+                    quizBrain.getQuestionAnswer() ? true : false;
 
                 setState(() {
                   scoreKeeper.add(scoreIcon(correctAnswer));
-                  nextQuestion();
+                  quizBrain.nextQuestion();
                 });
               },
               color: Colors.red,
