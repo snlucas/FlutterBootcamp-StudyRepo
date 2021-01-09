@@ -1,4 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:quizzler_app/question.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class QuizBrain {
   List<Question> _questionBank = [
@@ -43,9 +45,13 @@ class QuizBrain {
     return this._questionBank[this._questionIndex].questionAnswer;
   }
 
-  void nextQuestion() {
-    this._questionIndex =
-        _questionIndex < this.getSize() - 1 ? _questionIndex + 1 : 0;
+  void nextQuestion(BuildContext context) {
+    if (this._questionIndex < this.getSize() - 1) {
+      this._questionIndex++;
+    } else {
+      Alert(context: context, title: "RFLUTTER", desc: "Flutter is awesome.")
+          .show();
+    }
   }
 
   int getSize() {
