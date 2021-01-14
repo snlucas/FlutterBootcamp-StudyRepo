@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'input_page.dart';
 
 class ReusableCard extends StatelessWidget {
   ReusableCard({@required this.color, this.cardChild});
@@ -12,7 +11,7 @@ class ReusableCard extends StatelessWidget {
     return Container(
       margin: EdgeInsets.all(15.0),
       decoration: BoxDecoration(
-        color: kBottomContainerColor,
+        color: color,
         borderRadius: BorderRadius.circular(10.0),
       ),
       child: cardChild,

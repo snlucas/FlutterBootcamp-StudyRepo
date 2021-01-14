@@ -26,6 +26,14 @@ class _InputPageState extends State<InputPage> {
         : femaleCardColor = (femaleCardColor == kInactiveCardColor
             ? kActiveCardColor
             : kInactiveCardColor);
+
+    maleCardColor == kActiveCardColor
+        ? femaleCardColor = kInactiveCardColor
+        : femaleCardColor = kActiveCardColor;
+
+    femaleCardColor == kActiveCardColor
+        ? maleCardColor = kInactiveCardColor
+        : maleCardColor = kActiveCardColor;
   }
 
   @override
@@ -45,7 +53,6 @@ class _InputPageState extends State<InputPage> {
                       setState(() {
                         updateColor(1);
                       });
-                      print('Male card was pressed.');
                     },
                     child: ReusableCard(
                       color: maleCardColor,
@@ -62,7 +69,6 @@ class _InputPageState extends State<InputPage> {
                       setState(() {
                         updateColor(2);
                       });
-                      print('Female card was pressed.');
                     },
                     child: ReusableCard(
                       color: femaleCardColor,
@@ -78,7 +84,7 @@ class _InputPageState extends State<InputPage> {
           ),
           Expanded(
             child: ReusableCard(
-              color: kInactiveCardColor,
+              color: kActiveCardColor,
             ),
           ),
           Expanded(
@@ -86,12 +92,12 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
                 Expanded(
                   child: ReusableCard(
-                    color: kInactiveCardColor,
+                    color: kActiveCardColor,
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
-                    color: kInactiveCardColor,
+                    color: kActiveCardColor,
                   ),
                 ),
               ],
