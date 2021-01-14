@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:bmi_calculator/reusable_card.dart';
+import 'package:bmi_calculator/icon_content.dart';
 
 const kBottomContainerHeight = 80.0;
 const kActiveCardColor = 0xFF1D1E33;
@@ -26,7 +28,7 @@ class _InputPageState extends State<InputPage> {
                   child: ReusableCard(
                     color: Color(kActiveCardColor),
                     cardChild: IconContent(
-                      icon: FontAwesomeIcons.male,
+                      icon: FontAwesomeIcons.mars,
                       text: 'MALE',
                     ),
                   ),
@@ -35,7 +37,7 @@ class _InputPageState extends State<InputPage> {
                   child: ReusableCard(
                     color: Color(kActiveCardColor),
                     cardChild: IconContent(
-                      icon: FontAwesomeIcons.female,
+                      icon: FontAwesomeIcons.venus,
                       text: 'FEMALE',
                     ),
                   ),
@@ -75,54 +77,6 @@ class _InputPageState extends State<InputPage> {
           ),
         ],
       ),
-    );
-  }
-}
-
-class ReusableCard extends StatelessWidget {
-  ReusableCard({@required this.color, this.cardChild});
-
-  final Color color;
-  final Widget cardChild;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(15.0),
-      decoration: BoxDecoration(
-        color: Color(kBottomContainerColor),
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-      child: cardChild,
-    );
-  }
-}
-
-class IconContent extends StatelessWidget {
-  const IconContent({@required this.icon, @required this.text});
-
-  final IconData icon;
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Icon(
-          icon,
-          size: 80.0,
-        ),
-        SizedBox(
-          height: 15.0,
-        ),
-        Text(
-          text,
-          style: TextStyle(
-            fontSize: 18.0,
-            color: Color(0xFF808E98),
-          ),
-        ),
-      ],
     );
   }
 }
