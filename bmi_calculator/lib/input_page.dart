@@ -33,39 +33,31 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: <Widget>[
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        gender = Gender.male;
-                      });
-                    },
-                    child: ReusableCard(
-                      color: gender == Gender.male
-                          ? kActiveCardColor
-                          : kInactiveCardColor,
-                      cardChild: IconContent(
-                        icon: FontAwesomeIcons.mars,
-                        text: 'MALE',
-                      ),
+                  child: ReusableCard(
+                    color: gender == Gender.male
+                        ? kActiveCardColor
+                        : kInactiveCardColor,
+                    cardChild: IconContent(
+                      icon: FontAwesomeIcons.mars,
+                      text: 'MALE',
                     ),
+                    onPress: () {
+                      gender = Gender.male;
+                    },
                   ),
                 ),
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        gender = Gender.female;
-                      });
-                    },
-                    child: ReusableCard(
-                      color: gender == Gender.female
-                          ? kActiveCardColor
-                          : kInactiveCardColor,
-                      cardChild: IconContent(
-                        icon: FontAwesomeIcons.venus,
-                        text: 'FEMALE',
-                      ),
+                  child: ReusableCard(
+                    color: gender == Gender.female
+                        ? kActiveCardColor
+                        : kInactiveCardColor,
+                    cardChild: IconContent(
+                      icon: FontAwesomeIcons.venus,
+                      text: 'FEMALE',
                     ),
+                    onPress: () {
+                      gender = Gender.female;
+                    },
                   ),
                 ),
               ],
